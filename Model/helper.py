@@ -2,6 +2,7 @@ from transformers import DistilBertTokenizer, DistilBertForSequenceClassificatio
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 from keras.preprocessing.sequence import pad_sequences
 import torch
+
 output_dir = './model_save'
 
 
@@ -28,7 +29,7 @@ tokenizer = DistilBertTokenizer.from_pretrained(output_dir)
 # Copy the model to the GPU.
 model.to(device)
 
-print(fun(['market is very good', 'what a shit time to be in!']))
+soft = torch.nn.Softmax()
 
 
 def fun(sentences):
@@ -112,7 +113,13 @@ def fun(sentences):
 
         # Store predictions and true labels
         predictions.append(logits)
+        print(logits)
+        # predictions.append()
 
         print('DONE.')
 
     return predictions
+
+
+print(fun(['market is very good', 'what a shit time to be in!',
+           'The international electronic industry company Elcoteq has laid off tens of employees from its Tallinn facility ; contrary to earlier layoffs the company contracted the ranks of its office workers , the daily Postimees reported .']))
