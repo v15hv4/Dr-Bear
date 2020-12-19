@@ -4,7 +4,7 @@ body {
         "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #ffffff !important;
+    background-color: #000000 !important;
 }
 
 code {
@@ -24,8 +24,16 @@ code {
     display: none;
 }
 
+.message-input {
+    background-color: #222222 !important;
+    color: #eeeeee !important;
+    border: 1px solid #222222 !important;
+}
+
 .in-message {
     border-radius: 4px 12px 12px 12px !important;
+    background-color: #222222 !important;
+    color: #eeeeee !important;
 }
 
 .out-message {
@@ -55,21 +63,21 @@ code {
 }
 
 .custom-bg-primary {
-    background-color: #ffffff !important;
+    background-color: #000000 !important;
 }
 
 .custom-bg-secondary {
-    background-color: #aaaaaa !important;
+    background-color: #333333 !important;
 }
 
 .custom-bg-tertiary {
-    background-color: #888888 !important;
+    background-color: #555555 !important;
 }
 
 .custom-fg-primary {
-    color: #111111 !important;
+    color: #eeeeee !important;
 }
 
 .custom-fg-secondary {
-    color: #555555 !important;
+    color: #aaaaaa !important;
 }

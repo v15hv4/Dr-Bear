@@ -76,6 +76,7 @@ const Chat = ({ setContent, setLoading }) => {
                         value={input}
                         placeholder="Type a message..."
                         onChange={(e) => setInput(e.target.value)}
+                        className="message-input"
                     />
                     <Button color="dark" className="ml-2 d-flex flex-column justify-content-center">
                         <img src="/send-white-18dp.svg" alt="Send" />
