@@ -7,6 +7,7 @@ import InMessage from "./InMessage";
 import OutMessage from "./OutMessage";
 
 import RedditSample from "./reddit_sampledata.json";
+import NewsSample from "./news_sampledata.json";
 
 const Chat = ({ setContent, setLoading }) => {
     const [typing, setTyping] = useState(false);
@@ -52,18 +53,23 @@ const Chat = ({ setContent, setLoading }) => {
             // setPredictions(res.data.predictions);
             // setContent(res.data.objs);
 
-            setContent({
-                source: "reddit",
-                data: RedditSample,
-            });
-            // setContent({
-            //     source: "twitter",
-            //     data: TwitterSample,
-            // });
-            // setContent({
-            //     source: "news",
-            //     data: NewsSample,
-            // });
+            // TODO: un-hardcode and set both source and data from API response
+            if (input.split(" ").includes("reddit")) {
+                setContent({
+                    source: "reddit",
+                    data: RedditSample,
+                });
+            } else if (input.split(" ").includes("twitter")) {
+                setContent({
+                    source: "twitter",
+                    data: "",
+                });
+            } else if (input.split(" ").includes("news")) {
+                setContent({
+                    source: "news",
+                    data: NewsSample,
+                });
+            }
 
             setTyping(false);
             setLoading(false);

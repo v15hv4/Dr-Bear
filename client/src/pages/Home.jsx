@@ -6,6 +6,8 @@ import Chat from "../components/Chat";
 import Loading from "../components/Loading";
 import Greeting from "../components/Greeting";
 import Reddit from "../components/Reddit";
+import Twitter from "../components/Twitter";
+import News from "../components/News";
 
 const Home = () => {
     const [loading, setLoading] = useState(false);
@@ -18,10 +20,10 @@ const Home = () => {
             switch (content.source) {
                 case "reddit":
                     return <Reddit {...content} />;
-                // case "twitter":
-                //     return <Twitter {...content} />;
-                // case "news":
-                //     return <News {...content} />;
+                case "twitter":
+                    return <Twitter {...content} />;
+                case "news":
+                    return <News {...content} />;
                 default:
                     return <Greeting />;
             }
