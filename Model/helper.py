@@ -1,37 +1,32 @@
-def load_model(output_dir='./model_save'):
-    """
-    takes in the output directory to load th model form
+from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
+from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
+from keras.preprocessing.sequence import pad_sequences
+import torch
+output_dir = './model_save'
 
-    does: 
-        necessary imports, 
-        loading and initialising models 
-    """
-    from transformers import DistilBertForSequenceClassification
-    from transformers import DistilBertTokenizer
-    from keras.preprocessing.sequence import pad_sequences
 
-    global MAX_LEN = 64
+MAX_LEN = 64
 
-    # Tell PyTorch to use the GPU over CPU.
-    if torch.cuda.is_available():
-        device = torch.device("cuda")
-        print('There are %d GPU(s) available.' % torch.cuda.device_count())
-        print('We will use the GPU:', torch.cuda.get_device_name(0))
-    else:
-        print('No GPU available, using the CPU instead.')
-        device = torch.device("cpu")
+# Tell PyTorch to use the GPU over CPU.
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+    print('There are %d GPU(s) available.' % torch.cuda.device_count())
+    print('We will use the GPU:', torch.cuda.get_device_name(0))
+else:
+    print('No GPU available, using the CPU instead.')
+    device = torch.device("cpu")
 
-    # # in case there is some assert error by pytorch,
-    # # use the below instead of the above.
-    # # basically sets the hardware to be used as CPU
-    # device = torch.device("cpu")
+# # in case there is some assert error by pytorch,
+# # use the below instead of the above.
+# # basically sets the hardware to be used as CPU
+# device = torch.device("cpu")
 
-    # Load a trained model and vocabulary that you have fine-tuned
-    model = DistilBertForSequenceClassification.from_pretrained(output_dir)
-    tokenizer = DistilBertTokenizer.from_pretrained(output_dir)
+# Load a trained model and vocabulary that you have fine-tuned
+model = DistilBertForSequenceClassification.from_pretrained(output_dir)
+tokenizer = DistilBertTokenizer.from_pretrained(output_dir)
 
-    # Copy the model to the GPU.
-    model.to(device)
+# Copy the model to the GPU.
+model.to(device)
 
 
 def fun(sentences):
