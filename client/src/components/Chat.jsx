@@ -6,6 +6,8 @@ import axios from "axios";
 import InMessage from "./InMessage";
 import OutMessage from "./OutMessage";
 
+import RedditSample from "./reddit_sampledata.json";
+
 const Chat = ({ setContent, setLoading }) => {
     const [typing, setTyping] = useState(false);
     const [input, setInput] = useState("");
@@ -49,6 +51,20 @@ const Chat = ({ setContent, setLoading }) => {
             // }
             // setPredictions(res.data.predictions);
             // setContent(res.data.objs);
+
+            setContent({
+                source: "reddit",
+                data: RedditSample,
+            });
+            // setContent({
+            //     source: "twitter",
+            //     data: TwitterSample,
+            // });
+            // setContent({
+            //     source: "news",
+            //     data: NewsSample,
+            // });
+
             setTyping(false);
             setLoading(false);
         }, 1000);

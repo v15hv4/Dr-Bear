@@ -5,6 +5,7 @@ import FadeIn from "react-fade-in";
 import Chat from "../components/Chat";
 import Loading from "../components/Loading";
 import Greeting from "../components/Greeting";
+import Reddit from "../components/Reddit";
 
 const Home = () => {
     const [loading, setLoading] = useState(false);
@@ -13,21 +14,17 @@ const Home = () => {
     const renderContent = () => {
         if (loading) {
             return <Loading />;
-        } else if (content.length > 0) {
-            return (
-                <Container fluid tag={FadeIn}>
-                    <Row>
-                        {content.map((item) => (
-                            <Col md={4} className="d-flex" key={item.url}>
-                                {/* TODO: New Item component */}
-                                {/* <ProductItem {...item} /> */}
-                            </Col>
-                        ))}
-                    </Row>
-                </Container>
-            );
         } else {
-            return <Greeting />;
+            switch (content.source) {
+                case "reddit":
+                    return <Reddit {...content} />;
+                // case "twitter":
+                //     return <Twitter {...content} />;
+                // case "news":
+                //     return <News {...content} />;
+                default:
+                    return <Greeting />;
+            }
         }
     };
 
