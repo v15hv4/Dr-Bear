@@ -7,19 +7,19 @@ output_dir = './model_save'
 
 MAX_LEN = 64
 
-# Tell PyTorch to use the GPU over CPU.
-if torch.cuda.is_available():
-    device = torch.device("cuda")
-    print('There are %d GPU(s) available.' % torch.cuda.device_count())
-    print('We will use the GPU:', torch.cuda.get_device_name(0))
-else:
-    print('No GPU available, using the CPU instead.')
-    device = torch.device("cpu")
+# # Tell PyTorch to use the GPU over CPU.
+# if torch.cuda.is_available():
+#     device = torch.device("cuda")
+#     print('There are %d GPU(s) available.' % torch.cuda.device_count())
+#     print('We will use the GPU:', torch.cuda.get_device_name(0))
+# else:
+#     print('No GPU available, using the CPU instead.')
+#     device = torch.device("cpu")
 
-# # in case there is some assert error by pytorch,
-# # use the below instead of the above.
-# # basically sets the hardware to be used as CPU
-# device = torch.device("cpu")
+# in case there is some assert error by pytorch,
+# use the below instead of the above.
+# basically sets the hardware to be used as CPU
+device = torch.device("cpu")
 
 # Load a trained model and vocabulary that you have fine-tuned
 model = DistilBertForSequenceClassification.from_pretrained(output_dir)
@@ -27,6 +27,8 @@ tokenizer = DistilBertTokenizer.from_pretrained(output_dir)
 
 # Copy the model to the GPU.
 model.to(device)
+
+print(fun(['market is very good', 'what a shit time to be in!']))
 
 
 def fun(sentences):
