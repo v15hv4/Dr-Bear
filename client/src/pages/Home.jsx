@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
-import FadeIn from "react-fade-in";
 
 import Chat from "../components/Chat";
 import Loading from "../components/Loading";
@@ -34,7 +33,7 @@ const Home = () => {
         <Container fluid>
             <Row className="mx-3">
                 <Col>
-                    <Container fluid className="overflow-auto" style={{ maxHeight: "90vh" }}>
+                    <Container fluid className="overflow-auto" style={{ maxHeight: "100vh" }}>
                         {renderContent()}
                     </Container>
                 </Col>

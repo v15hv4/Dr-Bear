@@ -9,7 +9,7 @@ const Loading = () => {
             tag={FadeIn}
             className="d-flex flex-column justify-content-center align-items-center greeting-container"
         >
-            <Spinner style={{ width: "5rem", height: "5rem" }} />
+            <Spinner color="light" style={{ width: "5rem", height: "5rem" }} />
         </Container>
     );
 };
