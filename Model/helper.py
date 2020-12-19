@@ -92,7 +92,7 @@ def fun(sentences):
     model.eval()
 
     # Tracking variables
-    predictions = []
+    # predictions = []
 
     # Predict
     for batch in prediction_dataloader:
@@ -117,11 +117,11 @@ def fun(sentences):
         # predictions.append(logits)
         # print(logits)
         for logit in logits:
-            print(logit)
-            final_predictions.append(logit)
+            # print(logit)
+            final_predictions.append(soft(torch.FloatTensor(logit)).tolist())
         # predictions.append()
 
-        print('DONE.')
+        # print('DONE.')
 
     return final_predictions
 
