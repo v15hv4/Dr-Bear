@@ -35,6 +35,23 @@ soft = torch.nn.Softmax()
 def fun(sentences):
     """
     takes in sentences
+
+    for say 3 sentences sent as 
+    [
+        'market is very good', 
+        'what a shit time to be in!',
+        'The international electronic industry company Elcoteq has laid off tens of employees from its Tallinn facility ; contrary to earlier layoffs the company contracted the ranks of its office workers , the daily Postimees reported .'
+    ]
+
+    it'll give output as 
+    [
+        [0.018519463017582893, 0.6622043251991272, 0.3192761540412903], 
+        [0.15165632963180542, 0.7783054709434509, 0.07003823667764664], 
+        [0.9579136371612549, 0.02532344125211239, 0.01676289364695549]
+    ]
+    the values in the predicted list are the confidence scores
+    adding upto one
+
     returns predicted labels
     """
     final_predictions = []
