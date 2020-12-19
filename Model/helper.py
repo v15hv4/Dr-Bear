@@ -37,6 +37,8 @@ def fun(sentences):
     takes in sentences
     returns predicted labels
     """
+    final_predictions = []
+
     # Tokenize all of the sentences and map the tokens to thier word IDs.
     input_ids = []
 
@@ -75,7 +77,7 @@ def fun(sentences):
     # prediction_labels = torch.tensor(labels)
 
     # Set the batch size.
-    batch_size = 32
+    batch_size = 2
 
     # Create the DataLoader.
     # prediction_data = TensorDataset(prediction_inputs, prediction_masks, prediction_labels)
@@ -112,13 +114,16 @@ def fun(sentences):
         logits = logits.detach().cpu().numpy()
 
         # Store predictions and true labels
-        predictions.append(logits)
-        print(logits)
+        # predictions.append(logits)
+        # print(logits)
+        for logit in logits:
+            print(logit)
+            final_predictions.append(logit)
         # predictions.append()
 
         print('DONE.')
 
-    return predictions
+    return final_predictions
 
 
 print(fun(['market is very good', 'what a shit time to be in!',
