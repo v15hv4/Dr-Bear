@@ -10,9 +10,9 @@ def load_model(output_dir='./model_save'):
     from transformers import DistilBertTokenizer
     from keras.preprocessing.sequence import pad_sequences
 
-    MAX_LEN = 64
+    global MAX_LEN = 64
 
-    Tell PyTorch to use the GPU over CPU.
+    # Tell PyTorch to use the GPU over CPU.
     if torch.cuda.is_available():
         device = torch.device("cuda")
         print('There are %d GPU(s) available.' % torch.cuda.device_count())
@@ -57,7 +57,7 @@ def fun(sentences):
         input_ids.append(encoded_sent)
 
     # Pad our input tokens
-    input_ids = pad_sequences(input_ids, maxlen=64,
+    input_ids = pad_sequences(input_ids, maxlen=MAX_LEN,
                               dtype="long", truncating="post", padding="post")
     # print(input_ids)
     # print(torch.tensor(input_ids))
