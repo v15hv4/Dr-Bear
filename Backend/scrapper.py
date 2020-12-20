@@ -11,7 +11,7 @@ class Scrapper:
     """
 
     def __init__(self):
-        self.newsapi = NewsApiClient(api_key="***REMOVED***")
+        self.newsapi = NewsApiClient(api_key="")
         self.subreddits = [
             "investing",
             "personalfinance",
