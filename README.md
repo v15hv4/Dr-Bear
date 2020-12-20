@@ -41,7 +41,9 @@ Investing is a task that needs a lot of background about any company. While many
 
 ### Technologies Involved
 
-We have used Python for data-fetching and the Machine Learning models that we used, using various libraries such as tensorflow, nltk, and employing use of Regex for data cleaning. Our web-app has a React frontend and a Flask backend, and is hosted on a Azure platform, employing Dialogflow from GCP libraries for our chatbot.
+We have used Python for data-fetching and the Machine Learning models that we used, using various libraries such as tensorflow, nltk, and employing use of Regex for data cleaning. Our web-app has a React frontend and a Flask backend, and is hosted on a Azure platform, employing Dialogflow from GCP libraries for our chatbot. Here is a basic explanation of how our model works:
+
+<img src="https://media.discordapp.net/attachments/766879223897653272/790196156838969354/Untitled_Diagram.png">
 
 
 
@@ -49,7 +51,7 @@ We have used Python for data-fetching and the Machine Learning models that we us
 
 ### Features
 
-
+TODO
 
 ## Installation
 
