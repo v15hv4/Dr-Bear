@@ -85,7 +85,13 @@ Why the emphasis on space and speed? Well, not only is the model quite heavy, bu
 
 ### Chatbot
 
+We used Google's DialogFlow platform, which helps us do NLU (Natural Language Understanding). Our end goal is to extract two things:
+1. The name of the publically traded company
+2. The source which the user wants to explore: be it Twitter or Reddit or the latest news articles
 
+We complete this task by creating entities and intents. For entities, we have two kinds; as listed above. The name of the source was rather easy to handle, since its only one word. However, names of companies are not always restricted to one word; we have names like "Bank of America Corp" or "General Electric", and so on. We handle this by feeding lots of handwritten and handcrafted data; which is able to then capture the multi-word names of the companies.
+
+After we have created entities, we turn to intents. We have one single intent, which extracts both the entities, from the user input. This information in then passed onto the webapp, for further handling. 
 
 ### Members
 
