@@ -38,12 +38,31 @@ def chat():
     if company is not None:
         if source == "reddit":
             raw_data = scrap.scrape_reddit(company)
+            for key in raw_data.keys():
+                predictions = predict_sentiment(raw_data[key])
+                raw_data[key] = [
+                    (sentence, int(prediction))
+                    for sentence, prediction in zip(raw_data[key], predictions)
+                ]
         elif source == "news":
             raw_data = scrap.scrape_news(company)
+            sentences = [news_url["title"] for news_url in raw_data]
+            predictions = predict_sentiment(sentences)
+            for data, prediction in zip(raw_data, predictions):
+                data["sentiment"] = int(prediction)
         elif source == "twitter":
             raw_data = scrap.scrape_twitter(company)
+            sentences = [tweet_object["tweet"] for tweet_object in raw_data]
+            predictions = predict_sentiment(sentences)
+            for data, prediction in zip(raw_data, predictions):
+                data["sentiment"] = int(prediction)
 
-    response = {"message": message, "source": source, "company": company}
+    response = {
+        "message": message,
+        "source": source,
+        "data": raw_data,
+        "company": company,
+    }
     return response
 
 

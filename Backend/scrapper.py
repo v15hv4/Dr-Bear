@@ -87,6 +87,7 @@ class Scrapper:
                 each_entry["tweet"] = tweet
                 each_entry["hashtags"] = y.hashtags
                 each_entry["likes_count"] = y.likes_count
+                each_entry["id"] = y.id_str
                 formatted_data.append(each_entry)
             except Exception as e:
                 pprint(e)
