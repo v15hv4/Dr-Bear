@@ -48,22 +48,10 @@ const Chat = ({ setContent, setLoading }) => {
 
             if (res.data.data) {
                 setLoading(true);
-            }
-
-            if (res.data.source !== "") {
-                console.log(res.data);
-                setContent(res.data);
-                // setContent({
-                //     ...res.data,
-                //     data:
-                //         res.data.source === "twitter"
-                //             ? TwitterSample
-                //             : res.data.source === "reddit"
-                //             ? RedditSample
-                //             : res.data.source === "news"
-                //             ? NewsSample
-                //             : null,
-                // });
+                if (res.data.source !== "") {
+                    console.log(res.data);
+                    setContent(res.data);
+                }
             }
 
             setTyping(false);
