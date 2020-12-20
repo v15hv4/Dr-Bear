@@ -1,4 +1,4 @@
-<img src="https://media.discordapp.net/attachments/766879223897653272/790160774651314176/unknown.png">
+<img src="https://media.discordapp.net/attachments/766879223897653272/790189284371202078/image-removebg-preview_1.png">
 
 # DrBear 
 
