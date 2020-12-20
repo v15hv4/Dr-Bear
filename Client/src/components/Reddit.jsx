@@ -1,10 +1,24 @@
 import { Container } from "reactstrap";
 
 import FadeIn from "react-fade-in";
+import Sentiment from "./Sentiment";
+
+/**
+ * View component for each Reddit item
+ */
 
 const RedditItem = ({ comment }) => {
-    return <div className="h5 my-3">"{comment}"</div>;
+    return (
+        <div className="h5 my-3">
+            "{comment[0]}"
+            <Sentiment sentiment={comment[1]} />
+        </div>
+    );
 };
+
+/**
+ * Container and iterator to display Reddit items from the API response
+ */
 
 const Reddit = ({ data }) => {
     return (

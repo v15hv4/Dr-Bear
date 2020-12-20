@@ -20,17 +20,27 @@ class Scrapper:
             "finance",
         ]
         self.reddit_days = "7"
-        self.reddit_size = 50
+        self.reddit_size = 30
         self.twint_config = twint.Config()
-        self.twint_config.Limit = 5
+        self.twint_config.Limit = 1
         self.twint_config.Hide_output = True
         self.twint_config.Store_object = True
 
     def scrape_news(self, query):
-        """Scraps news using NewsApi"""
-        top_headlines = self.newsapi.get_everything(
-            q=query, language="en"
-        )
+        """Scraps news using NewsApi
+
+        Args:
+            query: Query to search for on news
+
+        Returns:
+            A list of dictionaries:
+            [
+                {"title": "title1", "url": "url1"},
+                {"title": "title2", "url": "url2"},
+                ...
+            ]
+        """
+        top_headlines = self.newsapi.get_everything(q=query, language="en")
         sources = self.newsapi.get_sources()
         outputs = []
         for x in top_headlines["articles"]:
@@ -41,7 +51,25 @@ class Scrapper:
         return outputs
 
     def scrape_reddit(self, query):
-        """Scraps reddit using pushshift API"""
+        """Scraps reddit using pushshift API
+
+        Args:
+            query: Query to search for on news
+
+        Returns:
+            A dictionary:
+            {
+                "subreddit1": [
+                  "comment1",
+                  "comment2",
+                ],
+                "subreddit2": [
+                  "comment1",
+                  "comment2",
+                ],
+            }
+        """
+        query = query.replace(" ", "%20")
         comments = {}
         for subreddit in self.subreddits:
             url = urllib.request.urlopen(
@@ -65,17 +93,49 @@ class Scrapper:
         return comments
 
     def __clean_tweet(self, tweet):
-        tweet = re.sub("#\w*", "", tweet)  # remove hashtags
-        tweet = re.sub("@\w*", "", tweet)  # remove @
+        """Cleans a specific tweet to a cleaned format.
+            Removed hashtags, mentions, multiple spaces and non-ascii 
+            characters.
+
+        Args:
+            tweet: A string containing the tweet
+
+        Returns:
+            A string, the cleaned tweet
+        """
+        # Remove hashtags
+        tweet = re.sub("#\w*", "", tweet)
+        # Remove @
+        tweet = re.sub("@\w*", "", tweet)
         tweet = re.sub("&amp", "", tweet)
-        tweet = re.sub("\s{2,}", " ", tweet)  # remove multiple spaces
-        tweet = tweet.encode("ascii", "ignore").decode("ascii")  # remove non-ascii
+        # Remove multiple spaces
+        tweet = re.sub("\s{2,}", " ", tweet)
+        # Remove non-ascii
+        tweet = tweet.encode("ascii", "ignore").decode("ascii")
         tweet = tweet.strip()
         return tweet
 
     def scrape_twitter(self, query):
-        """Scraps twitter using twint"""
+        """Scraps twitter using twint
+
+        Args:
+            query: Query to search for on twitter
+
+        Returns:
+            A list of dictionaries:
+            [
+                {
+                    "hashtags": [#hashtag1, #hashtag2],
+                    "id": "tweet-id",
+                    "likes_count": likes_count,
+                    "tweet": "tweet-text",
+                    "username": "twitter-username"
+                },
+                ...
+            ]
+        """
         self.twint_config.Search = query
+        twint.output.clean_lists()
         twint.run.Search(self.twint_config)
         data = twint.output.tweets_list
         formatted_data = []
@@ -87,6 +147,7 @@ class Scrapper:
                 each_entry["tweet"] = tweet
                 each_entry["hashtags"] = y.hashtags
                 each_entry["likes_count"] = y.likes_count
+                each_entry["id"] = y.id_str
                 formatted_data.append(each_entry)
             except Exception as e:
                 pprint(e)

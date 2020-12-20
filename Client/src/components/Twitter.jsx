@@ -3,10 +3,28 @@ import { Tweet } from "react-twitter-widgets";
 
 import FadeIn from "react-fade-in";
 import Masonry from "react-masonry-css";
+import Sentiment from "./Sentiment";
+
+/**
+ * View component for each Tweet
+ */
 
 const TwitterItem = ({ tweet }) => {
-    return <Tweet tweetId={tweet} options={{ theme: "dark" }} />;
+    return (
+        <div>
+            <Tweet
+                tweetId={tweet.id}
+                options={{ theme: "dark" }}
+                renderError={(_err) => "Could not load tweet!"}
+            />
+            <Sentiment sentiment={tweet.sentiment} className="ml-2 mb-4" />
+        </div>
+    );
 };
+
+/**
+ * Container and iterator to display Tweets from the API response
+ */
 
 const Twitter = ({ data }) => {
     return (
@@ -23,7 +41,7 @@ const Twitter = ({ data }) => {
                     className="tweet-grid"
                     columnClassName="tweet-grid-column"
                 >
-                    {data.map((tweet, idx) => (
+                    {data.slice(0, 50).map((tweet, idx) => (
                         <TwitterItem tweet={tweet} key={idx} />
                     ))}
                 </Masonry>

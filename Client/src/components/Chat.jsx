@@ -5,9 +5,9 @@ import { handleMessage } from "../api.js";
 import InMessage from "./InMessage";
 import OutMessage from "./OutMessage";
 
-import RedditSample from "./reddit_sampledata.json";
-import TwitterSample from "./twitter_sampledata.json";
-import NewsSample from "./news_sampledata.json";
+/**
+ * Messenger component to communicate with the chatbot
+ */
 
 const Chat = ({ setContent, setLoading }) => {
     const messageInput = useRef(null);
@@ -48,22 +48,10 @@ const Chat = ({ setContent, setLoading }) => {
 
             if (res.data.data) {
                 setLoading(true);
-            }
-
-            if (res.data.source !== "") {
-                console.log(res.data);
-                // setContent(res.data);
-                setContent({
-                    ...res.data,
-                    data:
-                        res.data.source === "twitter"
-                            ? TwitterSample
-                            : res.data.source === "reddit"
-                            ? RedditSample
-                            : res.data.source === "news"
-                            ? NewsSample
-                            : null,
-                });
+                if (res.data.source !== "") {
+                    console.log(res.data);
+                    setContent(res.data);
+                }
             }
 
             setTyping(false);
