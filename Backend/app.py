@@ -2,6 +2,7 @@ from flask import Flask, request
 from pprint import pprint
 from dialog import DialogFlow
 from scrapper import Scrapper
+from predict import predict_sentiment
 
 app = Flask(__name__)
 dflow = DialogFlow()
@@ -41,8 +42,6 @@ def chat():
             raw_data = scrap.scrape_news(company)
         elif source == "twitter":
             raw_data = scrap.scrape_twitter(company)
-
-    pprint(raw_data)
 
     response = {"message": message, "source": source, "company": company}
     return response

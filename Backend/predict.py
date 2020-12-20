@@ -3,7 +3,7 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 from keras.preprocessing.sequence import pad_sequences
 import torch
 
-output_dir = './model_save'
+output_dir = "./model_save"
 
 
 MAX_LEN = 64
@@ -32,7 +32,7 @@ model.to(device)
 soft = torch.nn.Softmax()
 
 
-def fun(sentences):
+def predict_sentiment(sentences):
     """
     takes in sentences
 
@@ -67,15 +67,16 @@ def fun(sentences):
         #   (3) Append the `[SEP]` token to the end.
         #   (4) Map tokens to their IDs.
         encoded_sent = tokenizer.encode(
-            sent,                      # Sentence to encode.
+            sent,  # Sentence to encode.
             add_special_tokens=True,  # Add '[CLS]' and '[SEP]'
         )
 
         input_ids.append(encoded_sent)
 
     # Pad our input tokens
-    input_ids = pad_sequences(input_ids, maxlen=MAX_LEN,
-                              dtype="long", truncating="post", padding="post")
+    input_ids = pad_sequences(
+        input_ids, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post"
+    )
     # print(input_ids)
     # print(torch.tensor(input_ids))
     # Create attention masks
@@ -101,7 +102,8 @@ def fun(sentences):
     prediction_data = TensorDataset(prediction_inputs, prediction_masks)
     prediction_sampler = SequentialSampler(prediction_data)
     prediction_dataloader = DataLoader(
-        prediction_data, sampler=prediction_sampler, batch_size=batch_size)
+        prediction_data, sampler=prediction_sampler, batch_size=batch_size
+    )
 
     ################################# PREDICTING ##############################
 
@@ -141,7 +143,3 @@ def fun(sentences):
         # print('DONE.')
 
     return final_predictions
-
-
-print(fun(['market is very good', 'what a shit time to be in!',
-           'The international electronic industry company Elcoteq has laid off tens of employees from its Tallinn facility ; contrary to earlier layoffs the company contracted the ranks of its office workers , the daily Postimees reported .']))
