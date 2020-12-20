@@ -27,10 +27,20 @@ class Scrapper:
         self.twint_config.Store_object = True
 
     def scrape_news(self, query):
-        """Scraps news using NewsApi"""
-        top_headlines = self.newsapi.get_everything(
-            q=query, language="en"
-        )
+        """Scraps news using NewsApi
+
+        Args:
+            query: Query to search for on news
+
+        Returns:
+            A list of dictionaries:
+            [
+                {"title": "title1", "url": "url1"},
+                {"title": "title2", "url": "url2"},
+                ...
+            ]
+        """
+        top_headlines = self.newsapi.get_everything(q=query, language="en")
         sources = self.newsapi.get_sources()
         outputs = []
         for x in top_headlines["articles"]:
@@ -41,7 +51,25 @@ class Scrapper:
         return outputs
 
     def scrape_reddit(self, query):
-        """Scraps reddit using pushshift API"""
+        """Scraps reddit using pushshift API
+
+        Args:
+            query: Query to search for on news
+
+        Returns:
+            A dictionary:
+            {
+                "subreddit1": [
+                  "comment1",
+                  "comment2",
+                ],
+                "subreddit2": [
+                  "comment1",
+                  "comment2",
+                ],
+            }
+        """
+        query = query.replace(" ", "%20")
         comments = {}
         for subreddit in self.subreddits:
             url = urllib.request.urlopen(
@@ -74,8 +102,27 @@ class Scrapper:
         return tweet
 
     def scrape_twitter(self, query):
-        """Scraps twitter using twint"""
+        """Scraps twitter using twint
+
+        Args:
+            query: Query to search for on twitter
+
+        Returns:
+            A list of dictionaries:
+            [
+                {
+                    "hashtags": [],
+                    "id": "",
+                    "likes_count": ,
+                    "sentiment": ,
+                    "tweet": "",
+                    "username": ""
+                },
+                ...
+            ]
+        """
         self.twint_config.Search = query
+        twint.output.clean_lists()
         twint.run.Search(self.twint_config)
         data = twint.output.tweets_list
         formatted_data = []
