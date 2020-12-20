@@ -30,6 +30,7 @@ Whenever you do something risky, have a Doctor nearby. DrBear is the doctor for 
 
 ## About
 
+<img src="https://media.discordapp.net/attachments/766879223897653272/790198169664749569/unknown.png?width=857&height=414">
 
 ### Introduction
 
