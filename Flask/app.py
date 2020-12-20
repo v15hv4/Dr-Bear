@@ -1,9 +1,11 @@
 from flask import Flask, request
 from pprint import pprint
 from dialog import DialogFlow
+from scrapper import Scrapper
 
 app = Flask(__name__)
 dflow = DialogFlow()
+scrap = Scrapper()
 
 
 @app.route("/chat/", methods=["POST"])
@@ -20,7 +22,7 @@ def chat():
     message = flow_output.query_result.fulfillment_messages[0].text.text[0]
 
     try:
-        company_field = flow_output.query_result.parameters.fields["company"]
+        company_field = flow_output.query_result.parameters.fields["Company"]
         company = company_field.list_value.values[0].string_value
     except:
         company = None
@@ -30,6 +32,17 @@ def chat():
         source = source_field.list_value.values[0].string_value
     except:
         source = None
+
+    raw_data = None
+    if company is not None:
+        if source == "reddit":
+            raw_data = scrap.scrape_reddit(company)
+        elif source == "news":
+            raw_data = scrap.scrape_news(company)
+        elif source == "twitter":
+            raw_data = scrap.scrape_twitter(company)
+
+    pprint(raw_data)
 
     response = {"message": message, "source": source, "company": company}
     return response
