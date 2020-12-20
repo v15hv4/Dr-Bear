@@ -52,7 +52,53 @@ We have used Python for data-fetching and the Machine Learning models that we us
 
 ## Installation
 
-TODO
+To install the backend API:
+
+> :warning: **Make sure you are using python3.6+**:
+
+First create a virtual environment using `venv`. For `apt` package manager,
+```bash
+sudo apt install python3-venv
+
+python3 -m venv .env
+```
+
+Activate the environment and install the required dependencies:
+
+```bash
+. .env/bin/activate
+pip3 install -r requirements.txt
+```
+
+For configuring the chatbot, you need to setup an account at Dailogflow
+and create a service accounts. Check "Setup Authentication" section
+on the official [Dialogflow documentation](https://cloud.google.com/dialogflow/es/docs/quick/setup).
+
+After obtaining the accounts details in `json` format, place it in 
+the folder `Backend`.
+
+To run the backedn,
+
+```bash
+cd Backend
+python3 app.py
+```
+
+To run the Clientside, we use Nodejs:
+
+Install the dependencies
+```bash
+cd Client
+
+npm install
+```
+
+To run the webapp,
+
+```bash
+npm start
+```
+
 
 ### Real-time Data Fetching
 
