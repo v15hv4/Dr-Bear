@@ -6,8 +6,8 @@
 
 **DrBear** is an assistant for all your investing needs. DrBear recognizes how volatile the market is, and how the market is defined by the people in it. DrBear is a chatbot that brings in the latest news, data, tweets about the company you want to see, using Sentiment Analysis trained using a cutting-edge DistilBERT model to identify the health of a company.
 
-- Use [this link](todo) to checkout the demo webapp. 
-- Checkout [this video](todo) for a working demo. 
+- Use [this link](http://52.151.193.38/) to checkout the demo webapp. 
+- Checkout [this video](https://youtu.be/8c3gqu8wNJg) for a working demo. 
 
 Whenever you do something risky, have a Doctor nearby. DrBear is the doctor for your investing needs.
 
