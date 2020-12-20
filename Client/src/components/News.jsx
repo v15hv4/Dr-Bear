@@ -6,12 +6,19 @@ import Sentiment from "./Sentiment";
 const NewsItem = ({ title, sentiment, url }) => {
     return (
         <div className="h2 my-5">
-            <b>
-                <a target="_blank" rel="noreferrer" href={url}>
-                    {title}
+            <span
+                className={`text-${
+                    sentiment === 1 ? "success" : sentiment === -1 ? "danger" : "warning"
+                }`}
+            >
+                {title}
+            </span>
+            <div className="d-flex align-items-center">
+                <Sentiment sentiment={sentiment} />
+                <a target="_blank" rel="noreferrer" href={url} className="h5 mt-1 ml-2">
+                    READ MORE
                 </a>
-            </b>
-            <Sentiment sentiment={sentiment} />
+            </div>
         </div>
     );
 };
