@@ -8,7 +8,11 @@ import Sentiment from "./Sentiment";
 const TwitterItem = ({ tweet }) => {
     return (
         <div>
-            <Tweet tweetId={tweet.id} options={{ theme: "dark" }} />
+            <Tweet
+                tweetId={tweet.id}
+                options={{ theme: "dark" }}
+                renderError={(_err) => "Could not load tweet!"}
+            />
             <Sentiment sentiment={tweet.sentiment} className="ml-2 mb-4" />
         </div>
     );
