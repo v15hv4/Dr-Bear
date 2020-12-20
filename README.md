@@ -71,7 +71,16 @@ TODO
 
 <img src="https://media.discordapp.net/attachments/766879223897653272/790164137497460757/Architecture-of-the-BERT-based-discriminator-model-Raw-texts-are-fed-into-the-model-to.png">
 
-TODO
+To check how the users of any platform react to a company's current status, we turn to Machine Learning techniques; able to preocess huge amuonts of data rather rapidly. Since financial advide if also condidered *risky* by many, we have used a SOTA model from Deep Learning (a subset of Machine Learning) to subdue your anxieties about bad advice. More specifically, we have obtained a whopping accuracy of over 86% in detecting the right sentiments, which palces the model well over the standard models. Now, what is this model?
+
+The model we have used in **DistilBERT**. Distil stands for a *distilled* version of the original model, **BERT**. BERT stands for Bidirectional Encoder Representations from Transformers. What this means is:
+- **BiDirectional**: we consider bidirectional semantic and syntactic dependencies
+- **Encoder Representaions**: converts the sequence of words (be it a tweet or a reddit comment) into a high dimensional single vector representaion; in other words, it converts all the information from the entire sequence into a single vector.
+- **Transformers**: No, it doesn't refer to Optimus Prime. Transformers are instead the current state of the model architectures used in NLP (natural Language Processing) making use of highly parallel GPU architectures at the hardware level, which are miles better than LSTMs or Bi-LSTMS, which take up a lot of time.
+
+Now, we could have used the original BERT model, but its almost twice as large; taking almost twice as much space and thus around twice the time to predict sentiments. *DistilBERT takes the same ideas from BERT and distils them, preserving most of the model accuracy but improving speed manifolds.* We have taken utmost care to make the model as speedy and compact as possible, and therefore used DistilBERT for our purpose.
+
+Why the emphasis on space and speed? Well, not only is the model quite heavy, but also takes some milliseconds to generate a prediction. We also consider the fact that the user request are generated on demand. We do not store anything before-hand (we cache for later) but the first runs shouldn't take time; after all they determine whether the user is going to stay on our site or not. So we scrape twitter and reddit *on-demand* and the analyse them, again, *on-deamand*. We are thus able to produce highly relevant data as well as highly relevant insights lightning fast.
 
 ### Chatbot
 
