@@ -19,6 +19,8 @@ def chat():
 
     pprint(flow_output)
 
+    return "Nice"
+
 
 if __name__ == "__main__":
     app.run(debug=True)

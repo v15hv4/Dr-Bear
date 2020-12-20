@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap");
+
+* {
+    font-family: "Jost", sans-serif !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #101010 !important;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.chatbar {
+    height: 100vh;
+    min-width: 500px;
+}
+
+.message-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.message-container::-webkit-scrollbar {
+    display: none;
+}
+
+.message-input {
+    background-color: #222222 !important;
+    color: #eeeeee !important;
+    border: 1px solid #222222 !important;
+    box-shadow: none !important;
+}
+
+.send-btn {
+    background-color: #00000000 !important;
+    border: none !important;
+    padding: none !important;
+    margin: none !important;
+}
+
+.send-btn:hover {
+    filter: brightness(1.5);
+}
+
+.send-btn:active,
+.send-btn:focus {
+    box-shadow: none !important;
+    filter: brightness(1.2);
+}
+
+.in-message {
+    border-radius: 4px 12px 12px 12px !important;
+    background-color: #222222 !important;
+    color: #eeeeee !important;
+}
+
+.out-message {
+    border-radius: 12px 4px 12px 12px !important;
+}
+
+.greeting-container {
+    height: 90vh;
+}
+
+.product-img {
+    width: 200px;
+}
+
+.product-title {
+    font-weight: 700;
+    font-size: 1.4em;
+    line-height: 1.2;
+}
+
+.product-rating {
+    font-size: 1.2em;
+}
+
+.product-price {
+    font-size: 2em;
+}
+
+.custom-bg-primary {
+    background-color: #101010 !important;
+}
+
+.custom-bg-secondary {
+    background-color: #333333 !important;
+}
+
+.custom-bg-tertiary {
+    background-color: #555555 !important;
+}
+
+.custom-fg-primary {
+    color: #eeeeee !important;
+}
+
+.custom-fg-secondary {
+    color: #aaaaaa !important;
+}
+
+.reddit-logo {
+    width: 280px;
+}
+
+.twitter-logo {
+    width: 70px;
+}
+
+.twitter-text {
+    width: 220px;
+}
+
+.tweet-grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: -10px;
+    width: 100%;
+}
+.tweet-grid-column {
+    padding: 0 0 0 10px;
+}

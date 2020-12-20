@@ -2,11 +2,11 @@ import dialogflow
 from google.api_core.exceptions import InvalidArgument
 import os
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./secret.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./secrets.json"
 
 class DialogFlow:
     def __init__(self):
-        self.DIALOGFLOW_PROJECT_ID = "PROJECT-NAME"
+        self.DIALOGFLOW_PROJECT_ID = "drbear-dydw"
         self.DIALOGFLOW_LANGUAGE_CODE = "en-US"
         self.SESSION_ID = "9999999999"
 
