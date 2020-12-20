@@ -8,8 +8,10 @@ const Greeting = () => {
             tag={FadeIn}
             className="d-flex flex-column justify-content-center align-items-center greeting-container"
         >
-            <h1 className="display-3 text-light"> Welcome! </h1>
-            <h3 className="mt-3 text-muted"> Message the bot to get started. </h3>
+            <h1 className="display-3 text-light font-weight-bold">
+                Dr <span className="text-warning">Bear</span>
+            </h1>
+            <h3 className="mt-3 text-muted">epic tagline here</h3>
         </Container>
     );
 };
