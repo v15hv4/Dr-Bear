@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { Container, Input, Button, Form } from "reactstrap";
+import { handleMessage } from "../api.js";
 
 import InMessage from "./InMessage";
 import OutMessage from "./OutMessage";
@@ -13,7 +14,6 @@ const Chat = ({ setContent, setLoading }) => {
 
     const [typing, setTyping] = useState(false);
     const [input, setInput] = useState("");
-    // const [predictions, setPredictions] = useState([]);
     const [messages, setMessages] = useState([
         {
             id: 0,
@@ -28,7 +28,6 @@ const Chat = ({ setContent, setLoading }) => {
 
         setTimeout(() => {
             setTyping(true);
-            setLoading(true);
         }, 500);
 
         const newHistory = [{ id: messages.length + 1, type: "out", content: input }, ...messages];
@@ -36,45 +35,40 @@ const Chat = ({ setContent, setLoading }) => {
 
         // send input to server; update message list and setContent from response
         setTimeout(async () => {
-            // TODO: new API calls
+            if (input === "") return;
 
-            // const res = await axios.post(
-            //     "/chat/",
-            //     { input: input },
-            //     { headers: { "Content-Type": "application/json" } }
-            // );
-            // console.log(res);
+            const res = await handleMessage(input);
 
-            // if (res.data.message !== "") {
-            //     setMessages([
-            //         ...newHistory,
-            //         { id: newHistory.length + 1, type: "in", content: res.data.message },
-            //     ]);
-            // }
-            // setPredictions(res.data.predictions);
-            // setContent(res.data.objs);
+            if (res.data.message !== "") {
+                setMessages([
+                    { id: newHistory.length + 1, type: "in", content: res.data.message },
+                    ...newHistory,
+                ]);
+            }
 
-            // TODO: un-hardcode and set both source and data from API response
-            if (input.split(" ").includes("reddit")) {
+            if (res.data.data) {
+                setLoading(true);
+            }
+
+            if (res.data.source !== "") {
+                console.log(res.data);
+                // setContent(res.data);
                 setContent({
-                    source: "reddit",
-                    data: RedditSample,
-                });
-            } else if (input.split(" ").includes("twitter")) {
-                setContent({
-                    source: "twitter",
-                    data: TwitterSample,
-                });
-            } else if (input.split(" ").includes("news")) {
-                setContent({
-                    source: "news",
-                    data: NewsSample,
+                    ...res.data,
+                    data:
+                        res.data.source === "twitter"
+                            ? TwitterSample
+                            : res.data.source === "reddit"
+                            ? RedditSample
+                            : res.data.source === "news"
+                            ? NewsSample
+                            : null,
                 });
             }
 
             setTyping(false);
             setLoading(false);
-        }, 1000);
+        }, 500);
 
         setInput("");
         messageInput.current.focus();
@@ -109,16 +103,6 @@ const Chat = ({ setContent, setLoading }) => {
                         <img src="/send-white-18dp.svg" alt="Send" />
                     </Button>
                 </Form>
-                {/* {predictions.length ? ( */}
-                {/*     <div className="mt-2"> */}
-                {/*         <div className="m-1"> Related keywords: </div> */}
-                {/*         {predictions.map((p) => ( */}
-                {/*             <Badge color="dark" className="m-1 p-2"> */}
-                {/*                 {p} */}
-                {/*             </Badge> */}
-                {/*         ))} */}
-                {/*     </div> */}
-                {/* ) : null} */}
             </Container>
         </Container>
     );
