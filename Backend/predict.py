@@ -3,6 +3,8 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 from keras.preprocessing.sequence import pad_sequences
 import torch
 
+import numpy as np
+
 output_dir = "./model_save"
 
 
@@ -137,7 +139,11 @@ def predict_sentiment(sentences):
         # print(logits)
         for logit in logits:
             # print(logit)
-            final_predictions.append(soft(torch.FloatTensor(logit)).tolist())
+            final_predictions.append(
+                np.argmax(
+                    soft(torch.FloatTensor(logit)).tolist()
+                )-1
+            )
         # predictions.append()
 
         # print('DONE.')
