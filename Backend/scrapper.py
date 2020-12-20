@@ -20,9 +20,9 @@ class Scrapper:
             "finance",
         ]
         self.reddit_days = "7"
-        self.reddit_size = 50
+        self.reddit_size = 30
         self.twint_config = twint.Config()
-        self.twint_config.Limit = 5
+        self.twint_config.Limit = 1
         self.twint_config.Hide_output = True
         self.twint_config.Store_object = True
 
