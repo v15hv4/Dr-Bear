@@ -50,25 +50,17 @@ We have used Python for data-fetching and the Machine Learning models that we us
 
 # MVP
 
-### Features
-
-TODO
-
 ## Installation
-
-TODO
-
-## Implementation
 
 TODO
 
 ### Real-time Data Fetching
 
-TODO
+We fetched data from multiple sources, using freely available APIs, or scraping in the case of Tweets. The data fetched is sorted according to likes, score or relevancy, and the rate called is one that is limited, since we wanted a seamless experience. The data has been cleaned whenever required, for example, in tweets we have removed hashtags and usertags.
 
 ### Web Application
 
-<put screenshot>
+<img src="https://media.discordapp.net/attachments/766879223897653272/790201475749773312/unknown.png?width=861&height=414">
 
 We used a React front-end and a Flask back-end for the webapp. There are two main components, one that fetches and display the data, and one which has the Chatbot component. Data is taken from the Chatbot and given to the several API calls, which then undergo data parsing and are fetched to display to the user. When making the webapp, speed and comfort were our primary targets, and we did several optimizations for it.
 
@@ -98,8 +90,8 @@ After we have created entities, we turn to intents. We have one single intent, w
 
 ### Members
 
-TODO
+The team involved in the project comprises of [Kunwar Shaanjeet Singh Grover](https://github.com/Groverkss), [Vishva Saravanan](https://github.com/v15hv4), [Mayank Goel](https://github.com/MayankGoel28) and [Tanishq Chaudhary](https://github.com/SmartyPants042), respectively.
 
 ## Further Ideas
 
-TODO
+Further improving speed, and implementing algo-trading solutions to add more depth to our bot. Parameter tuning to improve our Model is also on our priority.
