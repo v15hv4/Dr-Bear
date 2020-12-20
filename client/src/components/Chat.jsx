@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Container, Input, Button, Form, Badge } from "reactstrap";
+import { Container, Input, Button, Form } from "reactstrap";
 
 import InMessage from "./InMessage";
 import OutMessage from "./OutMessage";
@@ -28,7 +28,7 @@ const Chat = ({ setContent, setLoading }) => {
         setTimeout(() => {
             setTyping(true);
             setLoading(true);
-        }, 300);
+        }, 500);
 
         const newHistory = [{ id: messages.length + 1, type: "out", content: input }, ...messages];
         setMessages(newHistory);
@@ -101,7 +101,10 @@ const Chat = ({ setContent, setLoading }) => {
                         innerRef={messageInput}
                         className="message-input"
                     />
-                    <Button color="dark" className="ml-2 d-flex flex-column justify-content-center">
+                    <Button
+                        color="dark"
+                        className="ml-2 d-flex flex-column justify-content-center send-btn"
+                    >
                         <img src="/send-white-18dp.svg" alt="Send" />
                     </Button>
                 </Form>

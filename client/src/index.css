@@ -45,6 +45,23 @@ code {
     box-shadow: none !important;
 }
 
+.send-btn {
+    background-color: #00000000 !important;
+    border: none !important;
+    padding: none !important;
+    margin: none !important;
+}
+
+.send-btn:hover {
+    filter: brightness(1.5);
+}
+
+.send-btn:active,
+.send-btn:focus {
+    box-shadow: none !important;
+    filter: brightness(1.2);
+}
+
 .in-message {
     border-radius: 4px 12px 12px 12px !important;
     background-color: #222222 !important;
@@ -56,7 +73,7 @@ code {
 }
 
 .greeting-container {
-    height: 80vh;
+    height: 90vh;
 }
 
 .product-img {
