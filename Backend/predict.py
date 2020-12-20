@@ -1,27 +1,27 @@
-from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
-from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-from keras.preprocessing.sequence import pad_sequences
-import torch
-
+# All the necessary imports
+# math
 import numpy as np
 
+# Data preporcessing
+from keras.preprocessing.sequence import pad_sequences
+
+# Models, Tokenizers
+from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
+
+# Dataset handling
+from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
+
+# handling model output
+import torch
+
+
+# the place where we have our DistilBERT model
 output_dir = "./model_save"
 
-
+# maximum length of the comment/tweet; median lies below 64.
 MAX_LEN = 64
 
-# # Tell PyTorch to use the GPU over CPU.
-# if torch.cuda.is_available():
-#     device = torch.device("cuda")
-#     print('There are %d GPU(s) available.' % torch.cuda.device_count())
-#     print('We will use the GPU:', torch.cuda.get_device_name(0))
-# else:
-#     print('No GPU available, using the CPU instead.')
-#     device = torch.device("cpu")
-
-# in case there is some assert error by pytorch,
-# use the below instead of the above.
-# basically sets the hardware to be used as CPU
+# telling pytorch to use CPU for predicting outputs
 device = torch.device("cpu")
 
 # Load a trained model and vocabulary that you have fine-tuned
@@ -31,31 +31,16 @@ tokenizer = DistilBertTokenizer.from_pretrained(output_dir)
 # Copy the model to the GPU.
 model.to(device)
 
+# softmax layer for converting predicted logits into probability
 soft = torch.nn.Softmax()
 
 
 def predict_sentiment(sentences):
     """
-    takes in sentences
-
-    for say 3 sentences sent as 
-    [
-        'market is very good', 
-        'what a shit time to be in!',
-        'The international electronic industry company Elcoteq has laid off tens of employees from its Tallinn facility ; contrary to earlier layoffs the company contracted the ranks of its office workers , the daily Postimees reported .'
-    ]
-
-    it'll give output as 
-    [
-        [0.018519463017582893, 0.6622043251991272, 0.3192761540412903], 
-        [0.15165632963180542, 0.7783054709434509, 0.07003823667764664], 
-        [0.9579136371612549, 0.02532344125211239, 0.01676289364695549]
-    ]
-    the values in the predicted list are the confidence scores
-    adding upto one
-
-    returns predicted labels
+    takes in a list of sentences
+    returns a list of corresponding integer values from (-1, 0, +1)
     """
+    # list storing final predictions
     final_predictions = []
 
     # Tokenize all of the sentences and map the tokens to thier word IDs.
@@ -79,8 +64,7 @@ def predict_sentiment(sentences):
     input_ids = pad_sequences(
         input_ids, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post"
     )
-    # print(input_ids)
-    # print(torch.tensor(input_ids))
+
     # Create attention masks
     attention_masks = []
 
@@ -117,7 +101,7 @@ def predict_sentiment(sentences):
 
     # Predict
     for batch in prediction_dataloader:
-        # Add batch to GPU
+        # use CPU
         batch = tuple(t.to(device) for t in batch)
 
         # Unpack the inputs from our dataloader
@@ -135,17 +119,11 @@ def predict_sentiment(sentences):
         logits = logits.detach().cpu().numpy()
 
         # Store predictions and true labels
-        # predictions.append(logits)
-        # print(logits)
         for logit in logits:
-            # print(logit)
             final_predictions.append(
                 np.argmax(
                     soft(torch.FloatTensor(logit)).tolist()
                 )-1
             )
-        # predictions.append()
-
-        # print('DONE.')
 
     return final_predictions
