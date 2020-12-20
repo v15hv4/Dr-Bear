@@ -1,3 +1,5 @@
+![logo](https://imgur.com/a/s3opOQe)
+
 # DrBear 
 
 > "Risk comes from not knowing what you're doing." - Warren Buffet
