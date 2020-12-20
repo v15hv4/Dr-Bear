@@ -3,9 +3,15 @@ import { Tweet } from "react-twitter-widgets";
 
 import FadeIn from "react-fade-in";
 import Masonry from "react-masonry-css";
+import Sentiment from "./Sentiment";
 
 const TwitterItem = ({ tweet }) => {
-    return <Tweet tweetId={tweet} options={{ theme: "dark" }} />;
+    return (
+        <div>
+            <Tweet tweetId={tweet.id} options={{ theme: "dark" }} />
+            <Sentiment sentiment={tweet.sentiment} className="ml-2 mb-4" />
+        </div>
+    );
 };
 
 const Twitter = ({ data }) => {
@@ -23,7 +29,7 @@ const Twitter = ({ data }) => {
                     className="tweet-grid"
                     columnClassName="tweet-grid-column"
                 >
-                    {data.map((tweet, idx) => (
+                    {data.slice(0, 50).map((tweet, idx) => (
                         <TwitterItem tweet={tweet} key={idx} />
                     ))}
                 </Masonry>
