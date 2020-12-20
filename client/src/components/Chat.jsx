@@ -5,6 +5,7 @@ import InMessage from "./InMessage";
 import OutMessage from "./OutMessage";
 
 import RedditSample from "./reddit_sampledata.json";
+import TwitterSample from "./twitter_sampledata.json";
 import NewsSample from "./news_sampledata.json";
 
 const Chat = ({ setContent, setLoading }) => {
@@ -62,7 +63,7 @@ const Chat = ({ setContent, setLoading }) => {
             } else if (input.split(" ").includes("twitter")) {
                 setContent({
                     source: "twitter",
-                    data: "",
+                    data: TwitterSample,
                 });
             } else if (input.split(" ").includes("news")) {
                 setContent({

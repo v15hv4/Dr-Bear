@@ -20,8 +20,8 @@ const Reddit = ({ data }) => {
                         <div className="h3 mb-4">
                             <b>r/{subreddit}</b>
                         </div>
-                        {data[subreddit].map((comment) => (
-                            <RedditItem comment={comment} />
+                        {data[subreddit].map((comment, cidx) => (
+                            <RedditItem comment={comment} key={cidx} />
                         ))}
                     </div>
                 ))}

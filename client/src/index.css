@@ -23,6 +23,7 @@ code {
 
 .chatbar {
     height: 100vh;
+    min-width: 500px;
 }
 
 .message-container {
@@ -116,4 +117,23 @@ code {
 
 .reddit-logo {
     width: 280px;
+}
+
+.twitter-logo {
+    width: 70px;
+}
+
+.twitter-text {
+    width: 220px;
+}
+
+.tweet-grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: -10px;
+    width: 100%;
+}
+.tweet-grid-column {
+    padding: 0 0 0 10px;
 }

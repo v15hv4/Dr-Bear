@@ -37,7 +37,7 @@ const Home = () => {
                         {renderContent()}
                     </Container>
                 </Col>
-                <Col md={4} style={{ borderLeft: "1px solid #333" }}>
+                <Col xs={4} style={{ borderLeft: "1px solid #333" }}>
                     <Chat setContent={setContent} setLoading={setLoading} />
                 </Col>
             </Row>
