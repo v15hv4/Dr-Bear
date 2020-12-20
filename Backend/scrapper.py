@@ -93,11 +93,25 @@ class Scrapper:
         return comments
 
     def __clean_tweet(self, tweet):
-        tweet = re.sub("#\w*", "", tweet)  # remove hashtags
-        tweet = re.sub("@\w*", "", tweet)  # remove @
+        """Cleans a specific tweet to a cleaned format.
+            Removed hashtags, mentions, multiple spaces and non-ascii 
+            characters.
+
+        Args:
+            tweet: A string containing the tweet
+
+        Returns:
+            A string, the cleaned tweet
+        """
+        # Remove hashtags
+        tweet = re.sub("#\w*", "", tweet)
+        # Remove @
+        tweet = re.sub("@\w*", "", tweet)
         tweet = re.sub("&amp", "", tweet)
-        tweet = re.sub("\s{2,}", " ", tweet)  # remove multiple spaces
-        tweet = tweet.encode("ascii", "ignore").decode("ascii")  # remove non-ascii
+        # Remove multiple spaces
+        tweet = re.sub("\s{2,}", " ", tweet)
+        # Remove non-ascii
+        tweet = tweet.encode("ascii", "ignore").decode("ascii")
         tweet = tweet.strip()
         return tweet
 
@@ -111,12 +125,11 @@ class Scrapper:
             A list of dictionaries:
             [
                 {
-                    "hashtags": [],
-                    "id": "",
-                    "likes_count": ,
-                    "sentiment": ,
-                    "tweet": "",
-                    "username": ""
+                    "hashtags": [#hashtag1, #hashtag2],
+                    "id": "tweet-id",
+                    "likes_count": likes_count,
+                    "tweet": "tweet-text",
+                    "username": "twitter-username"
                 },
                 ...
             ]

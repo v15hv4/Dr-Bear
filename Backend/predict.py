@@ -1,5 +1,3 @@
-# All the necessary imports
-# math
 import numpy as np
 
 # Data preporcessing
@@ -36,11 +34,18 @@ soft = torch.nn.Softmax()
 
 
 def predict_sentiment(sentences):
+    """Produces sentiment analysis on a list of sentences
+
+    Args:
+        sentences:Takes in a list of sentences
+
+    Returns:
+        Returns a list of corresponding integer values from (-1, 0, +1)
+        1 --> Positive
+        0 --> Neutral
+       -1 --> Negative
     """
-    takes in a list of sentences
-    returns a list of corresponding integer values from (-1, 0, +1)
-    """
-    # list storing final predictions
+    # List storing final predictions
     final_predictions = []
 
     # Tokenize all of the sentences and map the tokens to thier word IDs.
@@ -121,9 +126,7 @@ def predict_sentiment(sentences):
         # Store predictions and true labels
         for logit in logits:
             final_predictions.append(
-                np.argmax(
-                    soft(torch.FloatTensor(logit)).tolist()
-                )-1
+                np.argmax(soft(torch.FloatTensor(logit)).tolist()) - 1
             )
 
     return final_predictions
