@@ -23,6 +23,7 @@ Whenever you do something risky, have a Doctor nearby. DrBear is the doctor for 
       - [Real-time Data Fetching](#Real-time-Data-Fetching)
       - [Web Application](#Web-Application)
       - [Sentiment Analysis](#Sentiment-Analysis)
+      - [Chatbot](#Chatbot)
 - [Further Ideas](#Further-Ideas)
 - [Members](#Members)
 - [License](LICENSE)
@@ -69,6 +70,10 @@ TODO
 ### Sentiment Analysis
 
 <img src="https://media.discordapp.net/attachments/766879223897653272/790164137497460757/Architecture-of-the-BERT-based-discriminator-model-Raw-texts-are-fed-into-the-model-to.png">
+
+TODO
+
+### Chatbot
 
 TODO
 
