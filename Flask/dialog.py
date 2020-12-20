@@ -4,6 +4,7 @@ import os
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./secrets.json"
 
+
 class DialogFlow:
     def __init__(self):
         self.DIALOGFLOW_PROJECT_ID = "drbear-dydw"
