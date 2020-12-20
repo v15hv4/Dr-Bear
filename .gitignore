@@ -1,3 +1,6 @@
+# Secrets
+*.secrets.json
+
 # Model
 Model/model_save
 
