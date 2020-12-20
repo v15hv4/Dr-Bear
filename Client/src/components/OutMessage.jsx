@@ -1,6 +1,10 @@
 import { Card, CardBody, Row } from "reactstrap";
 import FadeIn from "react-fade-in";
 
+/**
+ * Styled message component for outgoing messages
+ */
+
 const OutMessage = ({ content }) => {
     return (
         <FadeIn delay="10" childTag={Row} className="d-flex justify-content-end my-2">

@@ -1,3 +1,7 @@
+/**
+ * View component for displaying the sentiment score of a response item
+ */
+
 const Sentiment = ({ sentiment, className }) => {
     switch (sentiment) {
         case -1:

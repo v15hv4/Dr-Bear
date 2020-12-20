@@ -8,6 +8,10 @@ import Reddit from "../components/Reddit";
 import Twitter from "../components/Twitter";
 import News from "../components/News";
 
+/*
+ * Homepage to hold the messenger and display response objects
+ */
+
 const Home = () => {
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState([]);

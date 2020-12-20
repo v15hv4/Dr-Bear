@@ -1,6 +1,10 @@
 import { Container } from "reactstrap";
 import FadeIn from "react-fade-in";
 
+/**
+ * Initial greeting shown to the user
+ */
+
 const Greeting = () => {
     return (
         <Container

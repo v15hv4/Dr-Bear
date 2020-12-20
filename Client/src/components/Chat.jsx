@@ -5,9 +5,9 @@ import { handleMessage } from "../api.js";
 import InMessage from "./InMessage";
 import OutMessage from "./OutMessage";
 
-import RedditSample from "./reddit_sampledata.json";
-import TwitterSample from "./twitter_sampledata.json";
-import NewsSample from "./news_sampledata.json";
+/**
+ * Messenger component to communicate with the chatbot
+ */
 
 const Chat = ({ setContent, setLoading }) => {
     const messageInput = useRef(null);

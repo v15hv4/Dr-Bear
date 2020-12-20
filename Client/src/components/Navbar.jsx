@@ -1,5 +1,9 @@
 import { Navbar, NavbarBrand } from "reactstrap";
 
+/**
+ * Styled top fixed navigation bar
+ */
+
 const Navigation = () => {
     return (
         <Navbar light className="custom-bg-primary mb-2">

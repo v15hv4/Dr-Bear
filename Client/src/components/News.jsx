@@ -3,6 +3,10 @@ import { Container } from "reactstrap";
 import FadeIn from "react-fade-in";
 import Sentiment from "./Sentiment";
 
+/**
+ * View component for each news item
+ */
+
 const NewsItem = ({ title, sentiment, url }) => {
     return (
         <div className="h2 my-5">
@@ -22,6 +26,10 @@ const NewsItem = ({ title, sentiment, url }) => {
         </div>
     );
 };
+
+/**
+ * Container and iterator to display news items from the API response
+ */
 
 const News = ({ data }) => {
     return (

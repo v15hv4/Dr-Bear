@@ -5,6 +5,10 @@ import FadeIn from "react-fade-in";
 import Masonry from "react-masonry-css";
 import Sentiment from "./Sentiment";
 
+/**
+ * View component for each Tweet
+ */
+
 const TwitterItem = ({ tweet }) => {
     return (
         <div>
@@ -17,6 +21,10 @@ const TwitterItem = ({ tweet }) => {
         </div>
     );
 };
+
+/**
+ * Container and iterator to display Tweets from the API response
+ */
 
 const Twitter = ({ data }) => {
     return (

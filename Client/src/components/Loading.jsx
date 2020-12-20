@@ -2,6 +2,10 @@ import { Container } from "reactstrap";
 import { Spinner } from "reactstrap";
 import FadeIn from "react-fade-in";
 
+/**
+ * Intermediate loading screen
+ */
+
 const Loading = () => {
     return (
         <Container
