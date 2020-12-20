@@ -12,10 +12,8 @@ Whenever you do something risky, have a Doctor nearby. DrBear is the doctor for 
 ## Table of Contents
 
 - [About](#About)
-    - [Our Idea](#Our-Idea)
+    - [About Investing](#About-Investing)
     - [Technologies Involved](#Technologies-Involved)
-    - [DrBear](#DrBear)
-- [Members](#Members)
 - [MVP](#MVP)
     - [Features](#Features)
     - [Installation](#Installation)
@@ -24,33 +22,25 @@ Whenever you do something risky, have a Doctor nearby. DrBear is the doctor for 
       - [Web Application](#Web-Application)
       - [Sentiment Analysis](#Sentiment-Analysis)
 - [Further Ideas](#Further-Ideas)
+- [Members](#Members)
 - [License](LICENSE)
 
 ## About
 
+
 ### Introduction
 
-TODO
+DrBear is a chatbot assistant for finance news, discussions on forums, tweets and other such features. It uses Sentiment Analysis to predict the health of a company based on how people talk about it. It has a web-app which does real-time scraping and implementation of NLP techniques for the above.
 
 ### About Investing
 
-TODO
-
-### Our Idea
-
-TODO
+Investing is a task that needs a lot of background about any company. While many trading softwares do a cursory linear regression, such methods are useless at best and misleading at worst. A more informed user needs an assistant that assists and gives the necessary information. The market after all, is made of people, and what people like, sells.
 
 ### Technologies Involved
 
-TODO
+We have used Python for data-fetching and the Machine Learning models that we used, using various libraries such as tensorflow, nltk, and employing use of Regex for data cleaning. Our web-app has a React frontend and a Flask backend, and is hosted on a Azure platform, employing Dialogflow from GCP libraries for our chatbot.
 
-### DrBear
 
-TODO
-
-## Members
-
-TODO
 
 # MVP
 
