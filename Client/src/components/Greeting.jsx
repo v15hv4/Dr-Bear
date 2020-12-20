@@ -11,7 +11,7 @@ const Greeting = () => {
             <h1 className="display-3 text-light font-weight-bold">
                 Dr <span className="text-warning">Bear</span>
             </h1>
-            <h3 className="mt-3 text-muted">epic tagline here</h3>
+            <h3 className="mt-3 text-muted">The Doctor at Wall Street.</h3>
         </Container>
     );
 };
