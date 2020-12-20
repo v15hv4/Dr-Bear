@@ -49,7 +49,7 @@ We have used Python for data-fetching and the Machine Learning models that we us
 
 ### Features
 
-TODO
+
 
 ## Installation
 
@@ -65,7 +65,9 @@ TODO
 
 ### Web Application
 
-TODO
+<put screenshot>
+
+We used a React front-end and a Flask back-end for the webapp. There are two main components, one that fetches and display the data, and one which has the Chatbot component. Data is taken from the Chatbot and given to the several API calls, which then undergo data parsing and are fetched to display to the user. When making the webapp, speed and comfort were our primary targets, and we did several optimizations for it.
 
 ### Sentiment Analysis
 
@@ -83,7 +85,7 @@ Why the emphasis on space and speed? Well, not only is the model quite heavy, bu
 
 ### Chatbot
 
-TODO
+
 
 ### Members
 
