@@ -68,6 +68,8 @@ TODO
 
 ### Sentiment Analysis
 
+<img src="https://media.discordapp.net/attachments/766879223897653272/790164137497460757/Architecture-of-the-BERT-based-discriminator-model-Raw-texts-are-fed-into-the-model-to.png">
+
 TODO
 
 ### Members
